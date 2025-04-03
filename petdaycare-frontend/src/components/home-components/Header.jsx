@@ -1,10 +1,26 @@
 import React from "react";
+import headerbg from "../../assets/header-bg.png";
+import headerImg from "../../assets/header.png";
 
 const Header = () => {
   return (
     <header id="home" className="bg-purple-100 pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Header Image */}
+          <div className="relative">
+            <img
+              src={headerbg}
+              alt="header-bg"
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 w-72 opacity-50"
+            />
+            <img
+              src={headerImg}
+              alt="header"
+              className="w-full max-w-md mx-auto"
+            />
+          </div>
+
           {/* Header Content */}
           <div className="text-center md:text-left">
             <h4 className="inline-block bg-opacity-10 text-purple-700 text-sm font-semibold px-4 py-1 rounded-full">
@@ -28,20 +44,6 @@ const Header = () => {
                 <i className="ri-arrow-right-line"></i>
               </button>
             </div>
-          </div>
-
-          {/* Header Image */}
-          <div className="relative">
-            <img
-              src="../assets/header-bg.png"
-              alt="header-bg"
-              className="absolute top-1/2 left-0 transform -translate-y-1/2 w-72 opacity-50"
-            />
-            <img
-              src="../assets/header.png"
-              alt="header"
-              className="w-full max-w-md mx-auto"
-            />
           </div>
         </div>
       </div>

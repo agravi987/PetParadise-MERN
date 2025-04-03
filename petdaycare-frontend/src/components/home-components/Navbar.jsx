@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css"
+import "../../index.css";
 
 const Navbar = () => {
   return (
@@ -27,19 +27,34 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:space-x-8">
             {/* Nav Links */}
             <div className="flex space-x-6">
-              <a href="#home" className="text-gray-700 hover:text-purple-700 font-medium">
+              <a
+                href="#home"
+                className="text-gray-700 hover:text-purple-700 font-medium"
+              >
                 Home
               </a>
-              <a href="#about" className="text-gray-700 hover:text-purple-700 font-medium">
+              <a
+                href="#about"
+                className="text-gray-700 hover:text-purple-700 font-medium"
+              >
                 About
               </a>
-              <a href="#store" className="text-gray-700 hover:text-purple-700 font-medium">
+              <a
+                href="#store"
+                className="text-gray-700 hover:text-purple-700 font-medium"
+              >
                 Store
               </a>
-              <a href="#service" className="text-gray-700 hover:text-purple-700 font-medium">
+              <a
+                href="#service"
+                className="text-gray-700 hover:text-purple-700 font-medium"
+              >
                 Services
               </a>
-              <a href="#contact" className="text-gray-700 hover:text-purple-700 font-medium">
+              <a
+                href="#contact"
+                className="text-gray-700 hover:text-purple-700 font-medium"
+              >
                 Contact
               </a>
             </div>
@@ -68,19 +83,34 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div id="mobile-menu" className="md:hidden hidden">
         <div className="px-4 pt-4 pb-6 space-y-4">
-          <a href="#home" className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md">
+          <a
+            href="#home"
+            className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md"
+          >
             Home
           </a>
-          <a href="#about" className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md">
+          <a
+            href="#about"
+            className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md"
+          >
             About
           </a>
-          <a href="#store" className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md">
+          <a
+            href="#store"
+            className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md"
+          >
             Store
           </a>
-          <a href="#service" className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md">
+          <a
+            href="#service"
+            className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md"
+          >
             Services
           </a>
-          <a href="#contact" className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md">
+          <a
+            href="#contact"
+            className="block text-gray-700 hover:text-purple-700 px-4 py-2 rounded-md"
+          >
             Contact
           </a>
           <button
