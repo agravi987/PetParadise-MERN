@@ -6,6 +6,7 @@ export default function Home() {
     <Box textAlign="center">
       <Navbar />
       <h1 class="text-3xl font-bold underline">Hello Friends!</h1>
+     
       <Typography variant="h3" gutterBottom>
         🐶 PetDaycare
       </Typography>
