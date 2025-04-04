@@ -25,7 +25,7 @@ const Login = () => {
       <div className="login-content">
         <div className="login-image">
           <img 
-            src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+            src="https://i.pinimg.com/736x/e3/11/90/e31190096b08e2ed1e2edd5734125f24.jpg" 
             alt="Happy dog with owner" 
           />
         </div>
@@ -42,12 +42,14 @@ const Login = () => {
               name="email" 
               placeholder="Email Address" 
               onChange={handleChange} 
+              autoComplete="email"
             />
             <input 
               type="password" 
               name="password" 
               placeholder="Password" 
               onChange={handleChange} 
+              autoComplete="current-password"
             />
           </div>
 

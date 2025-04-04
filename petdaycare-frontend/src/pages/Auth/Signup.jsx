@@ -62,9 +62,9 @@ const Signup = () => {
     <div className="signup-background">
       <div className="signup-container">
         <div className="signup-image">
-          <img 
-            src="https://shorturl.at/QTceD" 
-            alt="Woman training her dog in the park" 
+          <img
+            src="https://shorturl.at/QTceD"
+            alt="Woman training her dog in the park"
           />
         </div>
 
