@@ -72,7 +72,7 @@
 h1 {
   color: #6d28d9;
   font-size: 2.2rem; /* Slightly larger */
-  margin-bottom: 1.8rem; /* More spacing */
+  margin-bottom: 1rem; /* More spacing */
   font-weight: bold;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }

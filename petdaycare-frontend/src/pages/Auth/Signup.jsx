@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../CSS/Signup.css";
+import "./CSS/Signup.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Signup = () => {
 
   const quotes = [
     "Every pet deserves a loving home!",
-    "Adopt, don’t shop!",
+    "Adopt, don't shop!",
     "A house is not a home without a pet.",
     "Pets make our lives whole.",
     "Furry friends, endless love!",
@@ -59,43 +59,48 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-image">
-        <img src="https://shorturl.at/kOPeh" alt="Training a Dog" />
-      </div>
+    <div className="signup-background">
+      <div className="signup-container">
+        <div className="signup-image">
+          <img 
+            src="https://shorturl.at/QTceD" 
+            alt="Woman training her dog in the park" 
+          />
+        </div>
 
-      <div className="signup-form">
-        <h1>Create Account</h1>
-        <p className="quote-text">{currentQuote}</p>
+        <div className="signup-form">
+          <h1>Create Account</h1>
+          <p className="quote-text">"{currentQuote}"</p>
 
-        {successMessage ? (
-          <p className="success-message">{successMessage}</p>
-        ) : (
-          <>
-            <div className="signup-fields">
-              <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} />
-              {errors.fullName && <p className="error-message">{errors.fullName}</p>}
+          {successMessage ? (
+            <p className="success-message">{successMessage}</p>
+          ) : (
+            <>
+              <div className="signup-fields">
+                <input type="text" name="fullName" placeholder="Full Name" onChange={handleChange} />
+                {errors.fullName && <p className="error-message">{errors.fullName}</p>}
 
-              <input type="email" name="email" placeholder="Email Address" onChange={handleChange} />
-              {errors.email && <p className="error-message">{errors.email}</p>}
+                <input type="email" name="email" placeholder="Email Address" onChange={handleChange} />
+                {errors.email && <p className="error-message">{errors.email}</p>}
 
-              <input type="password" name="password" placeholder="Create Password" onChange={handleChange} />
-              {errors.password && <p className="error-message">{errors.password}</p>}
+                <input type="password" name="password" placeholder="Create Password" onChange={handleChange} />
+                {errors.password && <p className="error-message">{errors.password}</p>}
 
-              <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} />
-              {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
-            </div>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" onChange={handleChange} />
+                {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
+              </div>
 
-            <button onClick={handleSignup}>Sign Up</button>
+              <button onClick={handleSignup}>Sign Up</button>
 
-            <p className="signup-login">
-              Already have an account?{" "}
-              <span onClick={() => navigate("/login")} className="login-link">
-                Login here
-              </span>
-            </p>
-          </>
-        )}
+              <p className="signup-login">
+                Already have an account?{" "}
+                <span onClick={() => navigate("/login")} className="login-link">
+                  Login here
+                </span>
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

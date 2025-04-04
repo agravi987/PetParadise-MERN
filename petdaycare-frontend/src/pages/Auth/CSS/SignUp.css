@@ -1,33 +1,38 @@
 /* Main Container */
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-   background: radial-gradient(circle at center, #a855f7 30%, #6b21a8 100%);
 
-    padding: 10px;
-   
-    gap: 0 rem;
-    flex-wrap: wrap; 
+.signup-background{
+    padding-top: 10vh;
+    background-color: #dacfe2;
+    height: 100vh;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Make children stretch to same height */
+  max-width: 1000px; /* Increased max width */
+  width: 90%;
+  margin: 0 auto;
+  height: 85vh; /* Full height */
 }
 
 .signup-image {
-
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 25%; 
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 45%; /* Slightly wider */
+  min-width: 450px; /* Increased minimum */
+  height: 100%;
 }
 
 .signup-image img {
-    max-width: 90%;
-    height: 60%;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px 0 0 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  height: 100%;
 }
 
 .signup-image img:hover {
@@ -36,18 +41,21 @@
 
 
 .signup-form {
-    flex: 1;
-   background: rgba(255, 255, 255, 0.95);
-  
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-    height: 73%;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.95);
+  padding: 2rem; /* Slightly more padding */
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 450px; /* Slightly wider */
+  /* height: 80vh; */
+  /* min-height: 500px; */
+  backdrop-filter: blur(10px);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .signup-form:hover {
@@ -56,8 +64,8 @@
 
 h1 {
     color: #6d28d9;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    /* margin-bottom: 1rem; */
     font-weight: bold;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -138,18 +146,18 @@ button:hover {
     }
 }
 
-.quote-text {
+/* .quote-text {
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
     color:purple;
     animation: neon-glow 2s infinite alternate;
-}
+} */
 
-@keyframes neon-glow {
+/* @keyframes neon-glow {
     0% { text-shadow: 0 0 2px #ff00ff, 0 0 3px #ff00ff, 0 0 4px #ff00ff; }
     25% { text-shadow: 0 0 2px #00ffff, 0 0 3px #00ffff, 0 0 4px #00ffff; }
     50% { text-shadow: 0 0 2px #ff1493, 0 0 3px #ff1493, 0 0 4px #ff1493; }
     75% { text-shadow: 0 0 2px #ff4500, 0 0 3px #ff4500, 0 0 4px #ff4500; }
     100% { text-shadow: 0 0 2px #8a2be2, 0 0 3px #8a2be2, 0 0 4px #8a2be2; }
-}
+} */
