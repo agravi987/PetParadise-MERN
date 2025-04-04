@@ -1,21 +1,25 @@
-import { Button, Typography, Box } from "@mui/material";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/home-components/Navbar";
+import Header from "../../components/home-components/Header";
+import IntroSection from "../../components/home-components/IntroSection";
+import AboutSection from "../../components/home-components/AboutSection";
+import ServiceSection from "../../components/home-components/ServiceSection";
+import StoreSection from "../../components/home-components/StoreSection";
+import ClientSection from "../../components/home-components/ClientSection";
+import InstagramSection from "../../components/home-components/InstagramSection";
+import Footer from "../../components/home-components/Footer";
 
 export default function Home() {
   return (
-    <Box textAlign="center">
+    <>
       <Navbar />
-      <h1 class="text-3xl font-bold underline">Hello Friends!</h1>
-     
-      <Typography variant="h3" gutterBottom>
-        🐶 PetDaycare
-      </Typography>
-      <Typography variant="h5" sx={{ mb: 4 }}>
-        Book daycare for your pets!
-      </Typography>
-      <Button variant="contained" href="/login" size="large">
-        Get Started
-      </Button>
-    </Box>
+      <Header />
+      <IntroSection />
+      <AboutSection />
+      <ServiceSection />
+      <StoreSection />
+      <ClientSection />
+      <InstagramSection />
+      <Footer />
+    </>
   );
 }
