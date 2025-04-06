@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ArrowLeft } from "lucide-react";
+
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -20,7 +22,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-500 to-purple-900 p-4">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-200 to-purple-300 p-4">
       <div className="flex flex-col lg:flex-row bg-white shadow-2xl rounded-2xl overflow-hidden w-full h-[80vh] max-w-4xl transition-all duration-500 ease-in-out">
         {/* Image Section */}
         <div className="hidden md:flex lg:w-1/2 md:w-[45%] items-center justify-center  bg-white rounded-l-xl h-full">
@@ -32,7 +34,16 @@ const Login = () => {
         </div>
 
         {/* Login Form */}
-        <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center bg-gradient-to-br from-purple-100 to-purple-100">
+        <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center bg-gradient-to-br from-purple-100 to-purple-100 relative">
+          {/* Back Arrow */}
+          <button
+            onClick={() => navigate(-1)}
+            className="absolute top-4 left-4 text-purple-800 hover:text-purple-900 flex items-center gap-2 z-10"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="font-medium">Back</span>
+          </button>
+
           <h1 className="text-3xl font-bold text-purple-700 mb-2 text-center">
             Login
           </h1>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -63,19 +64,28 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-purple-500 to-purple-900 py-10">
-      <div className="flex flex-col md:flex-row justify-center items-stretch max-w-5xl w-[90%] mx-auto bg-white/30 rounded-xl backdrop-blur-lg overflow-hidden h-[80vh]">
+    <div className="min-h-screen bg-gradient-to-r from-purple-200 to-purple-300 py-10">
+      <div className="flex flex-col md:flex-row justify-center items-stretch max-w-5xl w-[90%] mx-auto bg-white/30 rounded-xl backdrop-blur-lg overflow-hidden h-[80vh] relative">
         {/* Image */}
-        <div className="hidden md:flex w-full md:w-[45%] items-center justify-center  bg-white rounded-l-xl h-full">
+        <div className="hidden md:flex w-full md:w-[45%] items-center justify-center bg-white rounded-l-xl h-full">
           <img
             src="https://shorturl.at/QTceD"
             alt="Woman training her dog"
-            className="w-full h-full object-cover rounded-l-xl "
+            className="w-full h-full object-cover rounded-l-xl"
           />
         </div>
 
         {/* Form */}
-        <div className="w-full md:w-[55%] p-8 bg-gradient-to-br from-purple-100 to-purple-100 flex flex-col justify-center">
+        <div className="w-full md:w-[55%] p-8 bg-gradient-to-br from-purple-100 to-purple-100 flex flex-col justify-center relative">
+          {/* Back Arrow */}
+          <button
+            onClick={() => navigate(-1)}
+            className="absolute top-4 left-4 text-purple-800 hover:text-purple-900 flex items-center gap-2 z-10"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span className="font-medium">Back</span>
+          </button>
+
           <h1 className="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-800">
             Create Account
           </h1>
@@ -91,6 +101,7 @@ const Signup = () => {
           ) : (
             <>
               <div className="mt-6 space-y-4">
+                {/* Form Fields */}
                 <div>
                   <input
                     type="text"

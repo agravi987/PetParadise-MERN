@@ -4,7 +4,7 @@ import headerImg from "../../assets/header.png";
 
 const Header = () => {
   return (
-    <header id="home" className="bg-purple-100 pt-20 pb-16">
+    <header id="home" className="bg-purple-100 pt-8 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Header Image */}

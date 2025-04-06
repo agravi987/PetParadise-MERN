@@ -8,7 +8,7 @@ import About3Icon from "../../assets/about-3-icon.png";
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-purple-50">
+    <section className="py-8 bg-purple-50 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-gray-500 text-lg font-medium">About Us</p>
         <h2 className="text-4xl font-semibold text-purple-900 mt-2">
