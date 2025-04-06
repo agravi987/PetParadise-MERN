@@ -1,5 +1,6 @@
-import Navbar from "../../components/home-components/Navbar";
+
 import Header from "../../components/home-components/Header";
+import Navbar from "../../components/home-components/Navbar";
 import IntroSection from "../../components/home-components/IntroSection";
 import AboutSection from "../../components/home-components/AboutSection";
 import ServiceSection from "../../components/home-components/ServiceSection";
