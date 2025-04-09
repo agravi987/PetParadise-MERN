@@ -2,19 +2,31 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ArrowLeft } from "lucide-react";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!formData.email || !formData.password) {
       setErrorMessage("⚠️ Please enter both email and password.");
       return;
     }
-    setErrorMessage("");
-    navigate("/dashboard");
+
+    try {
+      const res = await axios.post("http://localhost:3001/login", formData);
+
+      if (res.data === "success") {
+        navigate("/hotels"); // go to protected page
+      } else {
+        setErrorMessage("⚠️ Invalid login credentials.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setErrorMessage("❌ Server error or invalid credentials.");
+    }
   };
 
   const handleChange = (e) => {

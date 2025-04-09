@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import axios from "axios";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -48,14 +49,33 @@ const Signup = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSignup = () => {
-    if (validateForm()) {
-      setSuccessMessage(
-        "🎉 Account created successfully! Redirecting to login..."
-      );
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+  const handleSignup = async () => {
+    if (!validateForm()) return;
+
+    try {
+      const res = await axios.post("http://localhost:3001/register", {
+        name: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (res.status === 200) {
+        setSuccessMessage(
+          "🎉 Account created successfully! Redirecting to login..."
+        );
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      } else {
+        setErrors({ general: "Something went wrong. Please try again." });
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      if (error.response?.data?.message) {
+        setErrors({ general: error.response.data.message });
+      } else {
+        setErrors({ general: "Server error. Please try again later." });
+      }
     }
   };
 
@@ -181,6 +201,11 @@ const Signup = () => {
           )}
         </div>
       </div>
+      {errors.general && (
+        <p className="text-red-600 text-center mt-4 font-medium">
+          {errors.general}
+        </p>
+      )}
     </div>
   );
 };
