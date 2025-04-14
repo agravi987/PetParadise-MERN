@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -19,44 +20,41 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-purple-900">Company</h4>
             <ul className="mt-4 space-y-2">
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
+                <Link to="/" className="text-gray-600 hover:text-purple-700">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
+                <Link
+                  to="/about"
+                  className="text-gray-600 hover:text-purple-700"
+                >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
+                <Link
+                  to="/service"
+                  className="text-gray-600 hover:text-purple-700"
+                >
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
+                <Link
+                  to="/store"
+                  className="text-gray-600 hover:text-purple-700"
+                >
                   Store
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
-                  Faq
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-purple-700">
-                  Contact Us
-                </a>
+                <Link
+                  to="/contact"
+                  className="text-gray-600 hover:text-purple-700"
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
@@ -67,7 +65,7 @@ const Footer = () => {
             <ul className="mt-4 space-y-2">
               <li>
                 <a href="#" className="text-gray-600 hover:text-purple-700">
-                  New Delhi, India
+                  Sri Eshwar College of Engineering , Coimbatore
                 </a>
               </li>
               <li>
@@ -81,12 +79,12 @@ const Footer = () => {
             <ul className="mt-4 space-y-2">
               <li>
                 <a href="#" className="text-gray-600 hover:text-purple-700">
-                  +91 0987654321
+                  +91 9651910384
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-purple-700">
-                  info@website.com
+                  petparadise@website.com
                 </a>
               </li>
             </ul>

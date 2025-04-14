@@ -4,6 +4,7 @@ import Service2Image from "../../assets/service-2.png";
 import Service3Image from "../../assets/service-3.png";
 import Service4Image from "../../assets/service-4.png";
 import Service5Image from "../../assets/service-5.png";
+import { Link } from "react-router-dom";
 
 const ServiceSection = () => {
   return (
@@ -15,14 +16,16 @@ const ServiceSection = () => {
         </h2>
         <div className="flex flex-wrap justify-center gap-8 mt-12">
           {/* Service Card 1 */}
-          <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">
-            <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
-              <img src={Service1Image} alt="service" className="w-12 h-12" />
+          <Link to="/login">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">
+              <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
+                <img src={Service1Image} alt="service" className="w-12 h-12" />
+              </div>
+              <p className="text-lg font-medium text-purple-900 mt-4">
+                Book PetDaycares
+              </p>
             </div>
-            <p className="text-lg font-medium text-purple-900 mt-4">
-              Emergency Care
-            </p>
-          </div>
+          </Link>
 
           {/* Service Card 2 */}
           <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">

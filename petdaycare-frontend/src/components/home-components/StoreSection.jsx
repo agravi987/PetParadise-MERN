@@ -27,7 +27,7 @@ const StoreSection = () => {
               disposal.
             </p>
             <h3 className="text-xl font-bold text-purple-900 mt-4">
-              $29.00 USD
+              ₹29.00 /-
             </h3>
           </div>
 
@@ -46,7 +46,7 @@ const StoreSection = () => {
               furry friends.
             </p>
             <h3 className="text-xl font-bold text-purple-900 mt-4">
-              $49.00 USD
+              ₹49.00 /-
             </h3>
           </div>
 
@@ -65,7 +65,7 @@ const StoreSection = () => {
               happy.
             </p>
             <h3 className="text-xl font-bold text-purple-900 mt-4">
-              $79.00 USD
+              ₹79.00 /-
             </h3>
           </div>
         </div>

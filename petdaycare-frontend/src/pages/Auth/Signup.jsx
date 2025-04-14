@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Signup = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -13,8 +14,6 @@ const Signup = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
-
   const quotes = [
     "Every pet deserves a loving home!",
     "Adopt, don't shop!",
@@ -22,7 +21,6 @@ const Signup = () => {
     "Pets make our lives whole.",
     "Furry friends, endless love!",
   ];
-
   const [currentQuote, setCurrentQuote] = useState(quotes[0]);
 
   useEffect(() => {
@@ -33,15 +31,14 @@ const Signup = () => {
   }, []);
 
   const validateForm = () => {
-    let newErrors = {};
+    const newErrors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!formData.fullName.trim())
       newErrors.fullName = "Full Name is required.";
     if (!emailPattern.test(formData.email))
-      newErrors.email = "Enter a valid email address.";
-    if (formData.password.length < 8)
-      newErrors.password = "Password must be at least 8 characters.";
+      newErrors.email = "Enter a valid email.";
+    if (formData.password.length < 8) newErrors.password = "Min 8 characters.";
     if (formData.password !== formData.confirmPassword)
       newErrors.confirmPassword = "Passwords do not match.";
 
@@ -53,29 +50,20 @@ const Signup = () => {
     if (!validateForm()) return;
 
     try {
-      const res = await axios.post("http://localhost:3001/register", {
+      await axios.post("http://localhost:3001/register", {
         name: formData.fullName,
         email: formData.email,
         password: formData.password,
       });
 
-      if (res.status === 200) {
-        setSuccessMessage(
-          "🎉 Account created successfully! Redirecting to login..."
-        );
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
-      } else {
-        setErrors({ general: "Something went wrong. Please try again." });
-      }
+      alert("🎉 Registered successfully!");
+      navigate("/login");
     } catch (error) {
-      console.error("Signup error:", error);
-      if (error.response?.data?.message) {
-        setErrors({ general: error.response.data.message });
-      } else {
-        setErrors({ general: "Server error. Please try again later." });
-      }
+      setErrors({
+        general:
+          error.response?.data?.message ||
+          "Something went wrong. Please try again.",
+      });
     }
   };
 
@@ -97,7 +85,6 @@ const Signup = () => {
 
         {/* Form */}
         <div className="w-full md:w-[55%] p-8 bg-gradient-to-br from-purple-100 to-purple-100 flex flex-col justify-center relative">
-          {/* Back Arrow */}
           <button
             onClick={() => navigate(-1)}
             className="absolute top-4 left-4 text-purple-800 hover:text-purple-900 flex items-center gap-2 z-10"
@@ -114,98 +101,90 @@ const Signup = () => {
             "{currentQuote}"
           </p>
 
-          {successMessage ? (
-            <p className="text-green-600 font-semibold text-center mt-4">
-              {successMessage}
+          <div className="mt-6 space-y-4">
+            <div>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                value={formData.fullName}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
+              />
+              {errors.fullName && (
+                <p className="text-red-600 text-sm mt-1">{errors.fullName}</p>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
+              />
+              {errors.email && (
+                <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="password"
+                name="password"
+                placeholder="Create Password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
+              />
+              {errors.password && (
+                <p className="text-red-600 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
+              />
+              {errors.confirmPassword && (
+                <p className="text-red-600 text-sm mt-1">
+                  {errors.confirmPassword}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <button
+            onClick={handleSignup}
+            className="mt-6 w-full py-3 bg-gradient-to-r from-purple-700 to-purple-900 text-white font-bold rounded-lg hover:scale-105 transition-transform"
+          >
+            Sign Up
+          </button>
+
+          <p className="mt-4 text-sm text-center text-purple-800">
+            Already have an account?{" "}
+            <span
+              onClick={() => navigate("/login")}
+              className="font-bold text-purple-600 cursor-pointer hover:underline"
+            >
+              Login here
+            </span>
+          </p>
+
+          {errors.general && (
+            <p className="text-red-600 text-center mt-4 font-medium">
+              {errors.general}
             </p>
-          ) : (
-            <>
-              <div className="mt-6 space-y-4">
-                {/* Form Fields */}
-                <div>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Full Name"
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
-                  />
-                  {errors.fullName && (
-                    <p className="text-red-600 text-sm mt-1">
-                      {errors.fullName}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
-                  />
-                  {errors.email && (
-                    <p className="text-red-600 text-sm mt-1">{errors.email}</p>
-                  )}
-                </div>
-
-                <div>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Create Password"
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
-                  />
-                  {errors.password && (
-                    <p className="text-red-600 text-sm mt-1">
-                      {errors.password}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    placeholder="Confirm Password"
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-300 rounded-lg outline-none focus:border-purple-500"
-                  />
-                  {errors.confirmPassword && (
-                    <p className="text-red-600 text-sm mt-1">
-                      {errors.confirmPassword}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <button
-                onClick={handleSignup}
-                className="mt-6 w-full py-3 bg-gradient-to-r from-purple-700 to-purple-900 text-white font-bold rounded-lg hover:scale-105 transition-transform"
-              >
-                Sign Up
-              </button>
-
-              <p className="mt-4 text-sm text-center text-purple-800">
-                Already have an account?{" "}
-                <span
-                  onClick={() => navigate("/login")}
-                  className="font-bold text-purple-600 cursor-pointer hover:underline"
-                >
-                  Login here
-                </span>
-              </p>
-            </>
           )}
         </div>
       </div>
-      {errors.general && (
-        <p className="text-red-600 text-center mt-4 font-medium">
-          {errors.general}
-        </p>
-      )}
     </div>
   );
 };
