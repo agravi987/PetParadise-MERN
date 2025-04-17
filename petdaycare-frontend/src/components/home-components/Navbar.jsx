@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../../index.css";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isAuthenticated, logout } = useAuth();
 
   const toggleMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -12,7 +14,7 @@ const Navbar = () => {
   const activeClass = "text-purple-700 font-bold border-b-2 border-purple-700";
 
   return (
-    <nav className="bg-violet-200 shadow-md  w-full z-10">
+    <nav className="bg-violet-200 shadow-md w-full z-10">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-3xl font-extrabold text-purple-700">
@@ -87,16 +89,34 @@ const Navbar = () => {
 
           {/* Buttons */}
           <div className="flex space-x-4 ml-6">
-            <Link to="/login">
-              <button className="text-purple-700 text-lg px-5 py-2 border border-purple-700 rounded-xl hover:bg-purple-50 transition duration-300">
-                Log In
-              </button>
-            </Link>
-            <Link to="/signup">
-              <button className="text-white text-lg px-5 py-2 bg-purple-500 rounded-xl hover:bg-purple-600 transition duration-300">
-                Sign Up
-              </button>
-            </Link>
+            {!isAuthenticated ? (
+              <>
+                <Link to="/login">
+                  <button className="text-purple-700 text-lg px-5 py-2 border border-purple-700 rounded-xl hover:bg-purple-50 transition duration-300">
+                    Log In
+                  </button>
+                </Link>
+                <Link to="/signup">
+                  <button className="text-white text-lg px-5 py-2 bg-purple-500 rounded-xl hover:bg-purple-600 transition duration-300">
+                    Sign Up
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/hotels">
+                  <button className="text-white text-lg px-5 py-2 bg-purple-500 rounded-xl hover:bg-purple-600 transition duration-300">
+                    Book Hotel
+                  </button>
+                </Link>
+                <button
+                  onClick={logout}
+                  className="text-purple-700 text-lg px-5 py-2 border border-purple-700 rounded-xl hover:bg-purple-50 transition duration-300"
+                >
+                  Logout
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -158,21 +178,35 @@ const Navbar = () => {
         >
           Contact
         </NavLink>
-        <Link to="/store">
-          <button className="w-full bg-purple-700 text-white text-lg py-2 rounded-xl hover:bg-purple-600">
-            Book Now
-          </button>
-        </Link>
-        <Link to="/login">
-          <button className="w-full text-purple-700 text-lg py-2 border border-purple-700 rounded-xl hover:bg-purple-50">
-            Log In
-          </button>
-        </Link>
-        <Link to="/signup">
-          <button className="w-full text-white text-lg py-2 bg-purple-500 rounded-xl hover:bg-purple-600">
-            Sign Up
-          </button>
-        </Link>
+
+        {isAuthenticated ? (
+          <>
+            <Link to="/hotels">
+              <button className="w-full bg-purple-700 text-white text-lg py-2 rounded-xl hover:bg-purple-600">
+                Book Now
+              </button>
+            </Link>
+            <button
+              onClick={logout}
+              className="w-full text-purple-700 text-lg py-2 border border-purple-700 rounded-xl hover:bg-purple-50"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="w-full text-purple-700 text-lg py-2 border border-purple-700 rounded-xl hover:bg-purple-50">
+                Log In
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button className="w-full text-white text-lg py-2 bg-purple-500 rounded-xl hover:bg-purple-600">
+                Sign Up
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import axios from "axios";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { register } = useAuth();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -50,12 +52,11 @@ const Signup = () => {
     if (!validateForm()) return;
 
     try {
-      await axios.post("http://localhost:3001/register", {
+      await register({
         name: formData.fullName,
         email: formData.email,
         password: formData.password,
       });
-
       alert("🎉 Registered successfully!");
       navigate("/login");
     } catch (error) {

@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import { ArrowLeft } from "lucide-react";
 import axios from "axios";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     if (!formData.email || !formData.password) {
@@ -16,11 +18,8 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/login", formData);
-
-      if (res.data === "success") {
-        navigate("/hotels"); // go to protected page
-      } else {
+      const success = await login(formData.email, formData.password);
+      if (!success) {
         setErrorMessage("⚠️ Invalid login credentials.");
       }
     } catch (err) {

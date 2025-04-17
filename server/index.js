@@ -1,58 +1,100 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors"); // Importing CORS for cross-origin resource sharing
+const cors = require("cors");
 const RegisterModel = require("./models/RegisterModel");
 
-// Creating an Express app
 const app = express();
 
-// Middleware to parse JSON and enable CORS
-app.use(express.json());
-app.use(cors());
+// Enhanced CORS configuration
+const corsOptions = {
+  origin: "http://localhost:5173", // Your frontend URL
+  credentials: true, // Allow cookies/sessions
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
-// Connecting to MongoDB database without deprecated options
+app.use(express.json());
+
+// Database connection with error handling
 mongoose
   .connect("mongodb://127.0.0.1:27017/petparadise_db")
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error:", err);
-  });
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-// POST request to login a user
-app.post("/login", (req, res) => {
-  const { email, password } = req.body; // Destructuring email and password from request body
-  // Using Mongoose to find a user with the email and password
-  RegisterModel.findOne({ email: email })
-    .then((user) => {
-      if (user) {
-        if (user.password === password) {
-          console.log("User logged in:", user);
-          res.status(200).json("success"); // Respond with the user data and status 200
-        } else {
-          console.log("Invalid password");
-          res.status(401).json({ error: "Unauthorized" }); // Respond with status 401 and error message
-        }
-      }
-    })
-    .catch((err) => {});
+// User registration
+app.post("/register", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    // Basic validation
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    // Check if user already exists
+    const existingUser = await RegisterModel.findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ error: "Email already registered" });
+    }
+
+    // Create new user (NOTE: In production, hash passwords!)
+    const newUser = await RegisterModel.create({ name, email, password });
+
+    // Return user data without password
+    const { password: _, ...userData } = newUser.toObject();
+    res.status(201).json(userData);
+  } catch (err) {
+    console.error("Registration error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-// POST request to register a user
-app.post("/register", (req, res) => {
-  // Using Mongoose to create a new document in the database
-  RegisterModel.create(req.body)
-    .then((data) => {
-      res.status(201).json(data); // Respond with the created user data and status 201
-    })
-    .catch((err) => {
-      console.error("Error during user registration:", err); // Log error if creation fails
-      res.status(500).json({ error: "Internal Server Error" }); // Respond with status 500 and error message
+// User login
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Find user
+    const user = await RegisterModel.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Compare passwords (NOTE: In production, use bcrypt!)
+    if (user.password !== password) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Return user data without password
+    const { password: _, ...userData } = user.toObject();
+    res.json({
+      status: "success",
+      user: userData,
     });
+  } catch (err) {
+    console.error("Login error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-// Starting the server on port 3001
+// Get user data
+app.get("/user", async (req, res) => {
+  try {
+    const { email } = req.query;
+    const user = await RegisterModel.findOne({ email }).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
+  } catch (err) {
+    console.error("User data error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 app.listen(3001, () => {
-  console.log("Server is running on port 3001, URL: http://localhost:3001"); // Log server start message
+  console.log("Server running on http://localhost:3001");
 });

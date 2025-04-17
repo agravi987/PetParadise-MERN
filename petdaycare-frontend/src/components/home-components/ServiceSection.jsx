@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const ServiceSection = () => {
   return (
-    <section className="py-16">
+    <section className="py-16 bg-purple-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-gray-500 text-lg font-medium">Services</p>
         <h2 className="text-4xl font-semibold text-purple-900 mt-2">
@@ -16,7 +16,7 @@ const ServiceSection = () => {
         </h2>
         <div className="flex flex-wrap justify-center gap-8 mt-12">
           {/* Service Card 1 */}
-          <Link to="/login">
+          <Link to="/hotels">
             <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">
               <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
                 <img src={Service1Image} alt="service" className="w-12 h-12" />
