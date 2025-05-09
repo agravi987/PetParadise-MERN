@@ -66,7 +66,7 @@ const hotelsData = [
     reviews: 180,
     services: ["Boarding", "Grooming", "Swimming"],
     image:
-      "https://images.unsplash.com/photo-1583511655826-05700442b31b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nJTIwcmVzb3J0fGVufDB8fDB8fHww",
+      "https://unsplash.com/photos/a-dog-with-sunglasses-on-its-head-playing-with-a-tennis-ball-tIegPW2u3kk",
     image1:
       "https://images.unsplash.com/photo-1594149929911-78975a43d4f5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwZGF5Y2FyZXxlbnwwfHwwfHx8MA%3D%3D",
     image2:

@@ -23,7 +23,7 @@ const products = [
     description: "Durable sisal scratching post with feather toy",
     price: "₹1,299.00",
     image:
-      "https://images.unsplash.com/photo-1636223426546-56e2a9646f52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0JTIwc2NyYXRjaGluZyUyMHBvc3R8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1636543459635-4a2b0e8704de?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "toys",
   },
   {
@@ -85,8 +85,7 @@ const products = [
     name: "Self-Cleaning Litter Box",
     description: "Automatic cleaning system for cats",
     price: "₹6,999.00",
-    image:
-      "https://images.unsplash.com/photo-1636223426546-56e2a9646f52?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0JTIwbGl0dGVyJTIwYm94fGVufDB8fDB8fHww",
+    image: "https://unsplash.com/photos/black-and-white-trash-bin-tB9tN000TSU ",
     category: "accessories",
   },
 ];

@@ -12,6 +12,7 @@ import BookingPage from "./components/Booking-components/BookingPage";
 import HotelDetails from "./components/Booking-components/HotelDetails";
 import { AuthProvider } from "./contexts/AuthContext";
 import Profile from "./pages/Home/Profile";
+import VeterinaryBooking from "./pages/Veterinary/VeterinaryBooking";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="/hotels/:id/book" element={<BookingPage />} />
             <Route path="/hotels/:id" element={<HotelDetails />} />
+            <Route path="veterinary" element={<VeterinaryBooking />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

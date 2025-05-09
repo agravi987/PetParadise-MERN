@@ -28,16 +28,17 @@ const ServiceSection = () => {
           </Link>
 
           {/* Service Card 2 */}
-          <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">
-            <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
-              <img src={Service2Image} alt="service" className="w-12 h-12" />
+          <Link to="/veterinary">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">
+              <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
+                <img src={Service2Image} alt="service" className="w-12 h-12" />
+              </div>
+              <p className="text-lg font-medium text-purple-900 mt-4">
+                Veterinary Services
+              </p>
             </div>
-            <p className="text-lg font-medium text-purple-900 mt-4">
-              Vaccination Services
-            </p>
-          </div>
-
-          {/* Service Card 3 */}
+            {/* Service Card 3 */}
+          </Link>
           <div className="bg-white p-6 rounded-lg shadow-md text-center w-64">
             <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto">
               <img src={Service3Image} alt="service" className="w-12 h-12" />
